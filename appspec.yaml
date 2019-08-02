@@ -1,5 +1,9 @@
 version: 0.0
-os: linux
-files:
-  - source: /var/lib/jenkins/workspace/Python_Aws/helloworld
-    destination: /var/www/html/
+Resources:
+  - TargetService:
+      Type: AWS::ECS::Service
+      Properties:
+        TaskDefinition: "arn:aws:ecs:us-east-1:274187263139:task-definition/first-run-task-definition:4"
+        LoadBalancerInfo:
+          ContainerName: "sample-app"
+          ContainerPort: 80
